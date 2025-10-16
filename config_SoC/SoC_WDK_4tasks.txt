@@ -1,0 +1,304 @@
+add_new_resource resource_type P resource_name TI-CC2650 resource_ID 0 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1536.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name CC2541F128RHAR resource_ID 1 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 256.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name PIC24FJ256GB106 resource_ID 2 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 512.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name PIC24FJ256GB108 resource_ID 3 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 512.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name PIC24FJ256GB110 resource_ID 4 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 512.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name ATMEGA2560-16AU resource_ID 5 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 128.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name ATSAM3X8EA-AU resource_ID 6 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 2688.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name MSP430FR2353 resource_ID 7 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 384.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name PIC32MX150F128D resource_ID 8 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1600.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name ATmega32u4 resource_ID 9 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 128.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name STM32L1 resource_ID 10 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1024.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name TDA4VPE-Q1 resource_ID 11 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 64000.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name AM273x resource_ID 12 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 12800.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name AM68x resource_ID 13 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 64000.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name AM625-Q1 resource_ID 14 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 12800.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name AM67A74 resource_ID 15 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 51200.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name AM69A98 resource_ID 16 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 64000.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name TDA4VM resource_ID 17 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 64000.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name TDA4AL resource_ID 18 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 64000.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name TDA4VL resource_ID 19 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 64000.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name STM32F2 resource_ID 20 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 3840.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name STM32F405 resource_ID 21 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 5376.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name STM32F722 resource_ID 22 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 6912.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name STM32H562 resource_ID 23 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 8000.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name STM32H742xIG resource_ID 24 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 15360.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name STM32N6x5xx resource_ID 25 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 25600.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name STM32L051x6 resource_ID 26 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1024.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name STM32L476xx resource_ID 27 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 2560.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name STM32U385xx resource_ID 28 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 3072.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name STM32U545xx resource_ID 29 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1600.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name STM32MP135F resource_ID 30 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 32000.0
+placeholder_task 1.0
+add_new_resource resource_type P resource_name Nvidia_xavier resource_ID 31 capacity 1 num_supported_functionalities 4 DVFS_mode none
+power 1.4485
+TaskFiltering 3811.5
+TaskFFT64 7645.0
+TaskFE 7753.4
+TaskMLP 3078.6
+add_new_resource resource_type P resource_name Rpi5 resource_ID 32 capacity 1 num_supported_functionalities 4 DVFS_mode none
+power 1.114
+TaskFiltering 2014.6
+TaskFFT64 4675.2
+TaskFE 4866.6
+TaskMLP 723.1
+add_new_resource resource_type P resource_name Odroid_XU3 resource_ID 33 capacity 1 num_supported_functionalities 4 DVFS_mode none
+power 0.173
+TaskFiltering 171.1
+TaskFFT64 1013.1
+TaskFE 661.1
+TaskMLP 1.0
+add_new_resource resource_type P resource_name STM32MP251 resource_ID 34 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 12800.0
+placeholder_task 1.0
+add_new_resource resource_type S resource_name 751-100 resource_ID 35 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.032
+placeholder_task 1.0
+add_new_resource resource_type S resource_name MPU-9250 resource_ID 36 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.5808
+placeholder_task 1.0
+add_new_resource resource_type S resource_name NCP707 resource_ID 37 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1.0
+placeholder_task 1.0
+add_new_resource resource_type S resource_name UTM-30LX resource_ID 38 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 2.0736
+placeholder_task 1.0
+add_new_resource resource_type S resource_name SEN-08713 resource_ID 39 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.016
+placeholder_task 1.0
+add_new_resource resource_type S resource_name 9260AA6 resource_ID 40 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.032
+placeholder_task 1.0
+add_new_resource resource_type S resource_name GKC-2000 resource_ID 41 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.032
+placeholder_task 1.0
+add_new_resource resource_type S resource_name MTi-1 resource_ID 42 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.0144
+placeholder_task 1.0
+add_new_resource resource_type S resource_name MTi-610 resource_ID 43 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.288
+placeholder_task 1.0
+add_new_resource resource_type S resource_name MTi-610R resource_ID 44 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.288
+placeholder_task 1.0
+add_new_resource resource_type S resource_name MTi-100 resource_ID 45 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.288
+placeholder_task 1.0
+add_new_resource resource_type S resource_name AT-04-001 resource_ID 46 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.064
+placeholder_task 1.0
+add_new_resource resource_type S resource_name FSS-SMT resource_ID 47 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.016
+placeholder_task 1.0
+add_new_resource resource_type S resource_name BMP280 resource_ID 48 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.007536
+placeholder_task 1.0
+add_new_resource resource_type S resource_name LPS25HBTR resource_ID 49 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.001
+placeholder_task 1.0
+add_new_resource resource_type S resource_name HMC5883L resource_ID 50 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.00768
+placeholder_task 1.0
+add_new_resource resource_type S resource_name ISM330DLCTR resource_ID 51 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.6397
+placeholder_task 1.0
+add_new_resource resource_type S resource_name ADXL345 resource_ID 52 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.1536
+placeholder_task 1.0
+add_new_resource resource_type S resource_name LSM303AHTR resource_ID 53 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.312
+placeholder_task 1.0
+add_new_resource resource_type S resource_name AIS2DW12 resource_ID 54 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.0048
+placeholder_task 1.0
+add_new_resource resource_type S resource_name ISM303DAC resource_ID 55 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.314
+placeholder_task 1.0
+add_new_resource resource_type S resource_name L3GD20H resource_ID 56 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.0364
+placeholder_task 1.0
+add_new_resource resource_type S resource_name LSM9DS1 resource_ID 57 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.0952
+placeholder_task 1.0
+add_new_resource resource_type S resource_name AD8221 resource_ID 58 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1.0
+placeholder_task 1.0
+add_new_resource resource_type S resource_name LSM9DS0 resource_ID 59 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.1181
+placeholder_task 1.0
+add_new_resource resource_type S resource_name Physiolog5 resource_ID 60 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.0133
+placeholder_task 1.0
+add_new_resource resource_type S resource_name NIRSport resource_ID 61 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.0024
+placeholder_task 1.0
+add_new_resource resource_type S resource_name AX3 resource_ID 62 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.1536
+placeholder_task 1.0
+add_new_resource resource_type S resource_name LSM6D resource_ID 63 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.6394
+placeholder_task 1.0
+add_new_resource resource_type S resource_name MAX30205 resource_ID 64 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.00032
+placeholder_task 1.0
+add_new_resource resource_type S resource_name Si7050 resource_ID 65 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.00148
+placeholder_task 1.0
+add_new_resource resource_type S resource_name LMT70 resource_ID 66 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.016
+placeholder_task 1.0
+add_new_resource resource_type S resource_name TMP117 resource_ID 67 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1.6e-05
+placeholder_task 1.0
+add_new_resource resource_type S resource_name MAX30102 resource_ID 68 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.1152
+placeholder_task 1.0
+add_new_resource resource_type S resource_name AD8232 resource_ID 69 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.016
+placeholder_task 1.0
+add_new_resource resource_type S resource_name MAX30100 resource_ID 70 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.032
+placeholder_task 1.0
+add_new_resource resource_type S resource_name MAX9814 resource_ID 71 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1.536
+placeholder_task 1.0
+add_new_resource resource_type S resource_name SPH0645LM4H-B resource_ID 72 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1.536
+placeholder_task 1.0
+add_new_resource resource_type S resource_name ICS‐43432 resource_ID 73 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1.152
+placeholder_task 1.0
+add_new_resource resource_type S resource_name ADMP401 resource_ID 74 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1.152
+placeholder_task 1.0
+add_new_resource resource_type S resource_name MP34DT01 resource_ID 75 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 3.25
+placeholder_task 1.0
+add_new_resource resource_type S resource_name IM69D130 resource_ID 76 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 3.3
+placeholder_task 1.0
+add_new_resource resource_type S resource_name TLV320ADC5140 resource_ID 77 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 98.3
+placeholder_task 1.0
+add_new_resource resource_type S resource_name CS5343 resource_ID 78 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 5.184
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name USB-6221 resource_ID 79 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 4.0
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name USB-6009 resource_ID 80 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.672
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name BT33LT-F resource_ID 81 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1.5
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name EFR32BG26B311F1024IL136 resource_ID 82 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 2496.0
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name CC2651R3SIPA resource_ID 83 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1536.0
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name CC2652PSIP resource_ID 84 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1536.0
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name CC2650MODA resource_ID 85 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1536.0
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name CC1310F128RGZT resource_ID 86 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1536.0
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name CC1310F128RHBT resource_ID 87 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1536.0
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name ESP32 resource_ID 88 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 7680.0
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name HC05 resource_ID 89 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 3.0
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name RN-42 resource_ID 90 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1.5
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name BlueNRG-MS resource_ID 91 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1.0
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name nRF52840 resource_ID 92 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 2048.0
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name PmodBT2 resource_ID 93 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 2.0
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name AS_NRF51822 resource_ID 94 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 512.0
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name SKY66110-11 resource_ID 95 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1.0
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name SE2438T resource_ID 96 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 1.0
+placeholder_task 1.0
+add_new_resource resource_type COM resource_name nRF24L01 resource_ID 97 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 2.0
+placeholder_task 1.0
+
