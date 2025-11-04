@@ -113,16 +113,16 @@ add_new_resource resource_type P resource_name STM32MP251 resource_ID 34 capacit
 power 12800.0
 placeholder_task 1.0
 add_new_resource resource_type S resource_name 751-100 resource_ID 35 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.032
-placeholder_task 1.0
+power 0.231
+TaskSensing 5120000
 add_new_resource resource_type S resource_name MPU-9250 resource_ID 36 capacity 1 num_supported_functionalities 1 DVFS_mode none
+power 0.01152
+TaskSensing 5120000
+add_new_resource resource_type S resource_name NCP707 resource_ID 37 capacity 1 num_supported_functionalities 1 DVFS_mode none
 power 0.5808
 placeholder_task 1.0
-add_new_resource resource_type S resource_name NCP707 resource_ID 37 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 1.0
-placeholder_task 1.0
 add_new_resource resource_type S resource_name UTM-30LX resource_ID 38 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 2.0736
+power 0.5808
 placeholder_task 1.0
 add_new_resource resource_type S resource_name SEN-08713 resource_ID 39 capacity 1 num_supported_functionalities 1 DVFS_mode none
 power 0.016
@@ -134,17 +134,17 @@ add_new_resource resource_type S resource_name GKC-2000 resource_ID 41 capacity 
 power 0.032
 placeholder_task 1.0
 add_new_resource resource_type S resource_name MTi-1 resource_ID 42 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.0144
-placeholder_task 1.0
+power 0.1
+TaskSensing 5120000
 add_new_resource resource_type S resource_name MTi-610 resource_ID 43 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.288
-placeholder_task 1.0
+power 0.06
+TaskSensing 1280000
 add_new_resource resource_type S resource_name MTi-610R resource_ID 44 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.288
-placeholder_task 1.0
+power 0.06
+TaskSensing 1280000
 add_new_resource resource_type S resource_name MTi-100 resource_ID 45 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.288
-placeholder_task 1.0
+power 0.520
+TaskSensing 1280000
 add_new_resource resource_type S resource_name AT-04-001 resource_ID 46 capacity 1 num_supported_functionalities 1 DVFS_mode none
 power 0.064
 placeholder_task 1.0
@@ -152,41 +152,41 @@ add_new_resource resource_type S resource_name FSS-SMT resource_ID 47 capacity 1
 power 0.016
 placeholder_task 1.0
 add_new_resource resource_type S resource_name BMP280 resource_ID 48 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.007536
-placeholder_task 1.0
+power 0.00000504
+TaskSensing 3080000
 add_new_resource resource_type S resource_name LPS25HBTR resource_ID 49 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.001
-placeholder_task 1.0
+power 0.0000068
+TaskSensing 20480000
 add_new_resource resource_type S resource_name HMC5883L resource_ID 50 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.00768
-placeholder_task 1.0
+power 0.00025
+TaskSensing 3200000
 add_new_resource resource_type S resource_name ISM330DLCTR resource_ID 51 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.6397
-placeholder_task 1.0
+power 0.0018
+TaskSensing 1230000
 add_new_resource resource_type S resource_name ADXL345 resource_ID 52 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.1536
-placeholder_task 1.0
+power 0.00035
+TaskSensing 640000
 add_new_resource resource_type S resource_name LSM303AHTR resource_ID 53 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.312
-placeholder_task 1.0
+power 0.0002916
+TaskSensing 1280000
 add_new_resource resource_type S resource_name AIS2DW12 resource_ID 54 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.0048
-placeholder_task 1.0
+power 0.0000195
+TaskSensing 5120000
 add_new_resource resource_type S resource_name ISM303DAC resource_ID 55 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.314
-placeholder_task 1.0
+power 0.00032076
+TaskSensing 1280000
 add_new_resource resource_type S resource_name L3GD20H resource_ID 56 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.0364
-placeholder_task 1.0
+power 0.018
+TaskSensing 1280000
 add_new_resource resource_type S resource_name LSM9DS1 resource_ID 57 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.0952
-placeholder_task 1.0
+power 0.0144
+TaskSensing 1080000
 add_new_resource resource_type S resource_name AD8221 resource_ID 58 capacity 1 num_supported_functionalities 1 DVFS_mode none
 power 1.0
 placeholder_task 1.0
 add_new_resource resource_type S resource_name LSM9DS0 resource_ID 59 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.1181
-placeholder_task 1.0
+power 0.02196
+TaskSensing 1350000
 add_new_resource resource_type S resource_name Physiolog5 resource_ID 60 capacity 1 num_supported_functionalities 1 DVFS_mode none
 power 0.0133
 placeholder_task 1.0
@@ -194,26 +194,26 @@ add_new_resource resource_type S resource_name NIRSport resource_ID 61 capacity 
 power 0.0024
 placeholder_task 1.0
 add_new_resource resource_type S resource_name AX3 resource_ID 62 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.1536
-placeholder_task 1.0
+power 0.594
+TaskSensing 5120000
 add_new_resource resource_type S resource_name LSM6D resource_ID 63 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.6394
-placeholder_task 1.0
+power 0.00162
+TaskSensing 1230000
 add_new_resource resource_type S resource_name MAX30205 resource_ID 64 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.00032
+power 0.0018
 placeholder_task 1.0
 add_new_resource resource_type S resource_name Si7050 resource_ID 65 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.00148
-placeholder_task 1.0
+power 0.000324
+TaskSensing 1280000
 add_new_resource resource_type S resource_name LMT70 resource_ID 66 capacity 1 num_supported_functionalities 1 DVFS_mode none
 power 0.016
 placeholder_task 1.0
 add_new_resource resource_type S resource_name TMP117 resource_ID 67 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 1.6e-05
-placeholder_task 1.0
+power 0.00001925
+TaskSensing 512000000
 add_new_resource resource_type S resource_name MAX30102 resource_ID 68 capacity 1 num_supported_functionalities 1 DVFS_mode none
-power 0.1152
-placeholder_task 1.0
+power 0.00216
+TaskSensing 1280000
 add_new_resource resource_type S resource_name AD8232 resource_ID 69 capacity 1 num_supported_functionalities 1 DVFS_mode none
 power 0.016
 placeholder_task 1.0

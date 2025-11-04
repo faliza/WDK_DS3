@@ -351,7 +351,8 @@ class ComplexDifferent(TestFunction):
         self.n_components = len(self.component_names)
         self.dim = self.n_components
         self.binary_inds = list(range(self.n_components))
-        self.bounds = torch.stack((torch.zeros(self.dim), torch.ones(self.dim))).to(**tkwargs)
+        # self.bounds = torch.stack((torch.zeros(self.dim), torch.ones(self.dim))).to(**tkwargs)
+        self.bounds = torch.stack((torch.zeros(self.dim), torch.ones(self.dim))).to(dtype=torch.float64, device='cpu')
 
         self.n_categorical = 0
         self.n_continuous = 0
@@ -374,12 +375,13 @@ class ComplexDifferent(TestFunction):
         #     for tag, count in zip(self.tag_names, self.tag_counts):
         #         print(f"{tag:10s}: {count.item()}")
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.type_features = self.type_features.to(device)
-        self.component_spaces = self.component_spaces.to(device)
-        self.component_energy = self.component_energy.to(device)
-        self.component_latency = self.component_latency.to(device)
-        self.task_tags_matrix = self.task_tags_matrix.to(device)
-        self.bounds = self.bounds.to(device)
+        self.type_features = self.type_features.to("cpu")
+        # self.type_features = self.type_features.to(device)
+        self.component_spaces = self.component_spaces.to("cpu")
+        self.component_energy = self.component_energy.to("cpu")
+        self.component_latency = self.component_latency.to("cpu")
+        self.task_tags_matrix = self.task_tags_matrix.to("cpu")
+        self.bounds = self.bounds.to("cpu")
 
     # ---------------------- Multi-Component Aggregation (MCA)
     # def check_component_constraint(self, x: torch.Tensor) -> bool:
@@ -624,7 +626,7 @@ class DS3DrivenObjective(ComplexDifferent):
         self.selection_output_file = selection_output_file
         self.result_input_file = result_input_file
         self.execution_times = []
-        self.throughputs = []
+        self.energy = []
 
     def call_ds3_simulator(self, x: torch.Tensor) -> tuple:
         if self.verbose:
@@ -640,7 +642,7 @@ class DS3DrivenObjective(ComplexDifferent):
             - avg_concurrent_jobs
         """
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.type_features = self.type_features.to(device)
+        self.type_features = self.type_features.to("cpu")
         x_np = x.cpu().numpy().astype(int)
         type_features_np = self.type_features.cpu().numpy()
         task_tags_np = self.task_tags_matrix.cpu().numpy()
@@ -674,7 +676,7 @@ class DS3DrivenObjective(ComplexDifferent):
             with open(self.result_input_file, 'r') as f:
                 lines = f.readlines()
                 execution_time = float(lines[0].strip())         # First line
-                total_throughput = float(lines[1].strip())       # Second line
+                total_energy = float(lines[1].strip())       # Second line
 
                 
                 # lines = f.readlines()
@@ -687,8 +689,8 @@ class DS3DrivenObjective(ComplexDifferent):
     
             # return latency, execution_time, cumulative_time, energy, edp, avg_concurrent_jobs
             print(f"execution_time: {execution_time} ")
-            print(f"total_throughput: {total_throughput} ")
-            return execution_time, total_throughput
+            print(f"total_energy: {total_energy} ")
+            return execution_time, total_energy
 
         except Exception as e:
             print("Failed to read DS3 result:", e)
@@ -708,18 +710,18 @@ class DS3DrivenObjective(ComplexDifferent):
             if self.verbose:
                 print("Tag constraints violated. Returning penalty 1e9.")
             self.execution_times.append(1e9)
-            self.throughputs.append(1e9)
+            self.energy.append(1e9)
             return torch.tensor(1e9, dtype=torch.float64)
     
         # Unpack full DS3 metrics
-        execution_time,total_throughput= self.call_ds3_simulator(x)
+        execution_time,energy= self.call_ds3_simulator(x)
         self.execution_times.append(execution_time)
-        self.throughputs.append(total_throughput)
+        self.energy.append(energy)
         penalty=sum(x)*P
         print(f"Penalty :{sum(x)} * {P} = {penalty}")
         # Example objective function: L1 * energy - L2 * latency + L3 * execution_time
         # objective_value = self.L1 * energy - self.L2 * latency + self.L3 * execution_time
-        objective_value = penalty+self.L2*1/(total_throughput)+ self.L3 * execution_time
+        objective_value = penalty+self.L2*(energy)+ self.L3 * execution_time
     
         if self.verbose:
             

@@ -92,7 +92,7 @@ class PE:
     
                 #  DTPM REMOVED — use fixed execution time
                 exec_time = resource.performance[resource.supported_functionalities.index(task.name)]
-                print(f" ----------------exec_time{exec_time}")
+                # print(f" ----------------exec_time{exec_time}")
                 yield self.env.timeout(exec_time)
                 task.finish_time = self.env.now
                 task_time = task.finish_time - task.start_time
@@ -101,10 +101,11 @@ class PE:
                 energy_task = task_time * self.power    # time × power
                 self.total_energy += energy_task        # accumulate per-PE
                 common.results.energy_consumption += energy_task  # accumulate global
+                # print(f" ----------------energy_task{energy_task}")
 
                 if common.INFO_SIM:
                     print(f"[E] Time {self.env.now}: PE-{self.ID} ({self.name}) ran {task.name} "
-                        f"for {task_time:.2f} us @ {self.power:.2f} uW → Energy {energy_task:.4f} uJ")
+                        f"for {task_time:.2f} us @ {self.power:.2f} W → Energy {energy_task:.4f} uJ")
 
     
                 self.idle = True

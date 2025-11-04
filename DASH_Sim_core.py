@@ -15,7 +15,7 @@ import copy
 
 original_deepcopy = copy.deepcopy
 def tracked_deepcopy(obj, memo=None):
-    print("Deep copying:", type(obj))
+    # print("Deep copying:", type(obj))
     return original_deepcopy(obj, memo)
 
 copy.deepcopy = tracked_deepcopy
@@ -80,7 +80,7 @@ class SimulationManager:
 
         @param completed_task: Object for the task that just completed execution
         '''
-        print("------update_ready_queue---------")
+        # print("------update_ready_queue---------")
         # completed_task is the task whose processing is just completed
         # Add completed task to the completed tasks queue
         common.TaskQueues.completed.list.append(completed_task)
@@ -179,7 +179,7 @@ class SimulationManager:
 
         @param ready_list: List of tasks that are ready to be executed
         '''
-        print("--------update_execution_queue----------")
+        # print("--------update_execution_queue----------")
         # Initialize $remove_from_ready_queue which will populate tasks
         # to be removed from the outstanding queue
         remove_from_ready_queue = []
@@ -195,7 +195,7 @@ class SimulationManager:
         job_ID = -1
         
         for ready_task in ready_list:
-            print(f"ready_task name: {ready_task.name}")
+            # print(f"ready_task name: {ready_task.name}")
             # If other communication modes are used (PE_to_PE or shared_memory)
             for ind, job in enumerate(self.jobs.list):
                 if job.name == ready_task.jobname:
@@ -265,22 +265,22 @@ class SimulationManager:
 
                     # Populate all ready tasks in executable with a time stamp
                     # which will show when a task is ready for execution
-                    print(f" ready task: {ready_task.ID}")
+                    # print(f" ready task: {ready_task.ID}")
                     common.TaskQueues.executable.list.append(ready_task)
                     
                     
                     #-------------print-------------
-                    for i, executable_task in enumerate(common.TaskQueues.executable.list):
-                        print(f" executable_task.id: {executable_task.ID}")
+                    # for i, executable_task in enumerate(common.TaskQueues.executable.list):
+                    #     print(f" executable_task.id: {executable_task.ID}")
                         
                     #-------------------------------    
                         
                     remove_from_ready_queue.append(ready_task)
                     if (common.PE_to_PE):
-                        print("move task to executable.list ")
+                        # print("move task to executable.list ")
                         common.TaskQueues.executable.list[-1].time_stamp = max(ready_task.PE_to_PE_wait_time)
                     else:
-                        print("move task to executable.list2 ")
+                        # print("move task to executable.list2 ")
                         common.TaskQueues.executable.list[-1].time_stamp = max(ready_task.execution_wait_times)
                 # end of ready_task.base_ID == task.ID:
             # end of i, task in enumerate(self.jobs.list[job_ID].task_list):    
@@ -288,7 +288,7 @@ class SimulationManager:
         
         # Remove the tasks from ready queue that have been moved to executable queue
         for task in remove_from_ready_queue:
-            print("remove_from_ready_queue")
+            # print("remove_from_ready_queue")
             common.TaskQueues.ready.list.remove(task)
 
         common.TaskQueues.executable.list.sort(key=lambda task: task.jobID, reverse=False)
@@ -297,7 +297,7 @@ class SimulationManager:
         '''!
         This function updates the common.TaskQueues.completed 
         '''  
-        print("----update_completed_queue--------")
+        # print("----update_completed_queue--------")
         ## Be careful about this function when there are diff jobs in the system
         # reorder tasks based on their job IDs
         common.TaskQueues.completed.list.sort(key=lambda x: x.jobID, reverse=False)
@@ -393,8 +393,8 @@ class SimulationManager:
 
 
                 self.update_execution_queue(common.TaskQueues.ready.list)       # Update the execution queue based on task's info
-                for i, executable_task in enumerate(common.TaskQueues.executable.list):
-                    print(f" executable_task.id2: {executable_task.ID}")
+                # for i, executable_task in enumerate(common.TaskQueues.executable.list):
+                #     print(f" executable_task.id2: {executable_task.ID}")
             # end of if not len(common.TaskQueues.ready.list) == 0:
 
             # Initialize $remove_from_executable which will populate tasks

@@ -32,18 +32,21 @@
 #job_name complex_different
 
 job_name 4tasks
-add_new_tasks 4
-TaskFiltering 0
-TaskFiltering HEAD
+add_new_tasks 5
+TaskSensing 0
+TaskSensing HEAD
+TaskSensing earliest_start 0 deadline 100000 input_vol 144 output_vol 144
+TaskFiltering 1 0 
 TaskFiltering earliest_start 0 deadline 100000 input_vol 144 output_vol 144
-TaskFFT64 1 0
+TaskFFT64 2 1
 TaskFFT64 earliest_start 0 deadline 100000 input_vol 144 output_vol 144
-TaskFE 2 1
+TaskFE 3 2
 TaskFE earliest_start 0 deadline 100000 input_vol 144 output_vol 144
-TaskMLP 3 2
-TaskK TAIL
+TaskMLP 4 3
+TaskMLP TAIL
 TaskMLP earliest_start 0 deadline 100000 input_vol 144 output_vol 144
 
 comm_vol 0 1 144
 comm_vol 1 2 144
 comm_vol 2 3 144
+comm_vol 3 4 144

@@ -14,7 +14,7 @@
 @BEGIN TASK
 
     ID 0
-    type processing cpu
+    type sensing gyroscope
     TO 1
 
 @END
@@ -22,7 +22,7 @@
 @BEGIN TASK
 
     ID 1
-    type processing cpu 
+    type processing cpu
     TO 2
 
 @END
@@ -30,7 +30,7 @@
 @BEGIN TASK
 
     ID 2
-    type processing cpu
+    type processing cpu 
     TO 3
 
 @END
@@ -43,4 +43,10 @@
 
 @END
 
+@BEGIN TASK
 
+    ID 4
+    type processing cpu
+    TO 5
+
+@END

@@ -211,16 +211,22 @@ def _run_single_trial(
         raise ValueError(f"Unknown evalfn {evalfn}")   # handle invalid inputs  
 
     # Get initial Sobol points
-    X = SobolEngine(dimension=f.dim, scramble=True, seed=torch_seed).draw(n_initial_points).to(**tkwargs)
-    
+    # X = SobolEngine(dimension=f.dim, scramble=True, seed=torch_seed).draw(n_initial_points).to(**tkwargs)
+    X = SobolEngine(dimension=f.dim, scramble=True, seed=torch_seed).draw(n_initial_points)
+    X = X.to(dtype=torch.float32, device='cpu')
+
     if init_with_k_spaced_binary_sobol:
         X[:, f.binary_inds] = 0
         with torch.random.fork_rng():
             #------------------For reproducibility----------------
             torch.manual_seed(torch_seed)
             #-------------------constraint to pick at leas 3
-            k = torch.randint(low=1, high=n_binary - 1, size=(n_initial_points,), device=device)
-            binary_inds = torch.tensor(f.binary_inds, device=device)
+            # k = torch.randint(low=1, high=n_binary - 1, size=(n_initial_points,), device=device)
+            k = torch.randint(low=1, high=n_binary - 1, size=(n_initial_points,), device='cpu')
+
+            # binary_inds = torch.tensor(f.binary_inds, device=device)
+            binary_inds = torch.tensor(f.binary_inds, dtype=torch.long, device='cpu')
+
             for i in range(n_initial_points):
                 X[i, binary_inds[torch.randperm(n_binary)][: k[i]]] = 1
 
@@ -228,7 +234,9 @@ def _run_single_trial(
     X = f.bounds[0] + (f.bounds[1] - f.bounds[0]) * X
     X[:, f.binary_inds] = X[:, f.binary_inds].round()  # Round binary variables
     assert f.n_categorical == 0, "TODO"
-    Y = torch.tensor([f(x) for x in X]).to(**tkwargs)
+    # Y = torch.tensor([f(x) for x in X]).to(**tkwargs)
+    Y = torch.tensor([f(x) for x in X], dtype=torch.float32, device='cpu')
+
     assert Y.ndim == 2 if evalfn == "SVM" else Y.ndim == 1
 
     afo_config = {

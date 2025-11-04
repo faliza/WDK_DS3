@@ -39,8 +39,8 @@ class Scheduler:
         self.PEs = PE_list
         self.jobs = jobs
         self.assigned = [0] * (len(self.PEs))
-        print(f"[Scheduler] len self.PEs = {(len(self.PEs))}")
-        print(f"[Scheduler] Initialized with name = {self.name}")
+        # print(f"[Scheduler] len self.PEs = {(len(self.PEs))}")
+        # print(f"[Scheduler] Initialized with name = {self.name}")
         
         # Optional BO-based inputs
         self.selection_vector = selection_vector  # shape: [n_components], binary
@@ -142,7 +142,7 @@ class Scheduler:
     def MET_leastLatency(self, list_of_ready):
        
         
-        print("--------------------scheduler: MET_edited")
+        # print("--------------------scheduler: MET_edited")
         # print(f"self.PEs :{self.PEs}")
         # print(f"list_of_ready {list_of_ready}")
         # print(f"selection_vector.size :{np.array(self.selection_vector).shape}")
@@ -258,7 +258,7 @@ class Scheduler:
         Chooses the PE that yields the minimum energy (exec_time * power)
         for each ready task.
         """
-        print("--------------------scheduler: MEE_edited")
+        # print("--------------------scheduler: MEE_edited")
 
         eligible_ids = [i for i, sel in enumerate(self.selection_vector) if sel]
         assigned = [0] * len(self.PEs)
@@ -276,8 +276,8 @@ class Scheduler:
                         power = resource.power                    # W (or µW depending on your SoC file)
                         energy = exec_time * power                # W×µs → µJ if power in W
                         energy_list[i] = energy
-                        print(f"[EVAL] PE-{i} {resource.name}: exec={exec_time:.2f} µs, "
-                            f"power={power:.2f}, energy={energy:.2f}")
+                        # print(f"[EVAL] PE-{i} {resource.name}: exec={exec_time:.2f} µs, "
+                        #     f"power={power:.2f}, energy={energy:.2f}")
 
             min_energy = min(energy_list)
             count_min = energy_list.count(min_energy)
@@ -312,7 +312,7 @@ class Scheduler:
         # end of MET(list_of_ready)      
     def  MET_capacity_aware(self, list_of_ready):
         
-        print("--------------------scheduler: MET_capacity_aware")
+        # print("--------------------scheduler: MET_capacity_aware")
         # print(f"self.PEs :{self.PEs}")
         # print(f"list_of_ready {list_of_ready}")
         # print(f"selection_vector.size :{np.array(self.selection_vector).shape}")
@@ -350,16 +350,16 @@ class Scheduler:
 
             
             if any(item != np.inf for item in exec_times_temp):
-                print("[INFO] At least one PE has a valid execution time.-> using exec_times_temp")
+                # print("[INFO] At least one PE has a valid execution time.-> using exec_times_temp")
                 min_of_exec_times = min(exec_times_temp)                                                 # $min_of_exec_times is the minimum of execution time of the task among all PEs
-                print(f"min_of_exec_times: {min_of_exec_times}")
+                # print(f"min_of_exec_times: {min_of_exec_times}")
                 count_minimum = exec_times_temp.count(min_of_exec_times)                                 # also, record how many times $min_of_exec_times is seen in the list
                 
 
             else:
-                print("[INFO] All PEs are at capacity, using exec_times")
+                # print("[INFO] All PEs are at capacity, using exec_times")
                 min_of_exec_times = min(exec_times)                                                 # $min_of_exec_times is the minimum of execution time of the task among all PEs
-                print(f"min_of_exec_times: {min_of_exec_times}")
+                # print(f"min_of_exec_times: {min_of_exec_times}")
                 count_minimum = exec_times.count(min_of_exec_times)                                 # also, record how many times $min_of_exec_times is seen in the list
                 
 

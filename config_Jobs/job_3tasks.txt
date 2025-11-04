@@ -1,0 +1,47 @@
+# Configuration file of the Single Carrier Receiver
+# Lines that start with "#" are comments
+# Start with specifying the job name with keyword: job_name
+# Then, in the next line, add tasks using the keyword: add_new_tasks
+# After that the following three lines must have the attributes below
+# $task_name (string) $task_id (int) $task_predecessors (list)
+# $task_name (string) HEAD (TAIL), if the task is the head or tail of the task graph
+# $task_name (string) $earliest_start (int) $deadline (int) $input_vol (int - bits) $output_vol (int - bits)
+# The format: add_new_tasks $num_of_tasks (int)
+#             $task_name (string) $task_id (int) $task_predecessors (list)
+#             $task_name (string) HEAD (string)  
+#             $task_name (string) $earliest_start (int) $deadline (int) $input_vol (int) $output_vol (int)
+# Example: The following lines add a new task with ID=0, and
+#          there is no predecessor for this task
+#          (empty list means there is no dependency)
+#          This task is the head of the task graph
+#          earliest start time and deadline are 0 and 10, respectively
+#          input and output volumes are 1024 bits
+#
+#          add_new_tasks 1
+#          scrambler 0 
+#          scrambler HEAD
+#          scrambler earliest_start 0 deadline 10 input_vol 1024 output_vol 1024
+#
+# After adding tasks, use keyword comm_vol to add communication volume for
+# the tasks that have dependencies 
+# The format: comm_vol $source_id (int) $destination_id (int) volume (int)
+# Example: The following line adds communication volume between task 0 (source)
+#          and task 1 (destination)
+#                    
+#          comm_vol 0 1 5
+#job_name complex_different
+
+job_name 4tasks
+add_new_tasks 3
+TaskSensing 0
+TaskSensing HEAD
+TaskSensing earliest_start 0 deadline 100000 input_vol 144 output_vol 144
+TaskFiltering 1 0 
+TaskFiltering earliest_start 0 deadline 100000 input_vol 144 output_vol 144
+TaskCOM 2 1
+TaskCOM TAIL
+TaskCOM earliest_start 0 deadline 100000 input_vol 144 output_vol 144
+
+comm_vol 0 1 144
+comm_vol 1 2 144
+

@@ -10,7 +10,7 @@ with np.load(file_path) as data:
 print("Original vector:", task_tags.shape,x.shape,type_features.shape)
 
 # Modify first vector
-indices_to_enable = [31]
+indices_to_enable = [31,59]
 x[:] = 0
 x[indices_to_enable] = 1
 # %%

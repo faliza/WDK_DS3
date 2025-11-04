@@ -27,31 +27,42 @@ import scheduler                                                                
 import DASH_Sim_utils
 print("Dash_Sim_V0------------------------------")
 #--------------import datat from Bodi---------------------
-if os.path.exists("bo_input_vectors.npz"):
-    print("[I] Found BO input vector file. Loading component selection and tag data.")
-    data = np.load("bo_input_vectors.npz")
-    selection_vector = data["x"]               # binary component selection vector
-    component_tags = data["type_features"]     # shape: (num_components, num_tags)
-    task_tag_matrix = data["task_tags"]        # shape: (num_tasks, num_tags)
-    data.close()
+# if os.path.exists("bo_input_vectors.npz"):
+#     print("[I] Found BO input vector file. Loading component selection and tag data.")
+#     data = np.load("bo_input_vectors.npz")
+#     selection_vector = data["x"]               # binary component selection vector
+#     # component_tags = data["type_features"]     # shape: (num_components, num_tags)
+#     # task_tag_matrix = data["task_tags"]        # shape: (num_tasks, num_tags)
+#     data.close()
 
-    # Convert to Python native types if needed
-    selection_vector = selection_vector.astype(bool).tolist()
-    component_tags = component_tags.tolist()
-    task_tag_matrix = task_tag_matrix.tolist()
+#     # Convert to Python native types if needed
+#     selection_vector = selection_vector.astype(bool).tolist()
+#     # component_tags = component_tags.tolist()
+#     # task_tag_matrix = task_tag_matrix.tolist()
 
-    # Optional: print/debug
-    print("Loaded selection_vector:", selection_vector[:10])
-    print("Loaded selection_vector shape:", len(selection_vector))
-    print("Loaded component_tags shape:", len(component_tags), "x", len(component_tags[0]))
-    print("Number of selected components (DS3):", sum(selection_vector))
-    print("Loaded task_tag_matrix shape:", len(task_tag_matrix), "x", len(task_tag_matrix[0]))
+#     # Optional: print/debug
+#     print("Loaded selection_vector:", selection_vector[:10])
+#     print("Loaded selection_vector shape:", len(selection_vector))
+#     # print("Loaded component_tags shape:", len(component_tags), "x", len(component_tags[0]))
+#     print("Number of selected components (DS3):", sum(selection_vector))
+#     # print("Loaded task_tag_matrix shape:", len(task_tag_matrix), "x", len(task_tag_matrix[0]))
 
 
-    common.selection_vector = selection_vector
-    common.component_tags = component_tags
-    common.task_tag_matrix = np.array(task_tag_matrix)
+#     common.selection_vector = selection_vector
+#     # common.component_tags = component_tags
+#     # common.task_tag_matrix = np.array(task_tag_matrix)
 
+# ==== Load the selection vector passed by BO ====
+# vec_path = "selection_vector.npy"
+
+# if os.path.exists(vec_path):
+#     print("[I] Loading current selection vector for DS3 evaluation…")
+#     selection_vector = np.load(vec_path).astype(bool).tolist()
+#     print(" → Selected components:", sum(selection_vector))
+# else:
+#     raise FileNotFoundError(f"[ERROR] Selection vector file missing: {vec_path}")
+
+# common.selection_vector = selection_vector
 
 
 
@@ -85,7 +96,7 @@ def run_simulator(scale_values=common.scale_values_list):
         DASH_Sim_utils.clean_traces()
 
     for cluster in common.ClusterManager.cluster_list:
-        print(f"common.ClusterManager.cluster_list {cluster}")
+        # print(f"common.ClusterManager.cluster_list {cluster}")
         if cluster.DVFS != 'none':
             if len(cluster.trip_freq) != len(common.trip_temperature) or len(cluster.trip_freq) != len(common.trip_hysteresis):
                 print("[E] The trip points must match in size:")
@@ -106,8 +117,8 @@ def run_simulator(scale_values=common.scale_values_list):
     print(f"jobs:{job_files_list}")
     for job_file in job_files_list:
         job_parser.job_parse(jobs, job_file)                                        # Parse the input job file to populate the job list
-        print(f"[DEBUG] Parsed job file: {job_file}")
-        print(f"[DEBUG] Number of jobs parsed so far: {len(jobs.list)}")
+        # print(f"[DEBUG] Parsed job file: {job_file}")
+        # print(f"[DEBUG] Number of jobs parsed so far: {len(jobs.list)}")
     ## Initialize variables at simulation start
     DASH_Sim_utils.init_variables_at_sim_start()
 
@@ -201,10 +212,10 @@ def run_simulator(scale_values=common.scale_values_list):
             DASH_resources,
             jobs,
             selection_vector=common.selection_vector,
-            type_features=common.component_tags,
-            task_tags_matrix=common.task_tag_matrix
+            # type_features=common.component_tags,
+            # task_tags_matrix=common.task_tag_matrix
         )
-        print(f"DASH_scheduler {DASH_scheduler}")
+        # print(f"DASH_scheduler {DASH_scheduler}")
 
         # Check whether PEs are initialized correctly
         if (common.DEBUG_CONFIG):
@@ -228,7 +239,7 @@ def run_simulator(scale_values=common.scale_values_list):
         # job_execution_time += common.results.cumulative_exe_time / common.results.completed_jobs                           # find the mean job duration
         #----------------0/0-----------------------------
         if common.results.completed_jobs > 0:
-            job_execution_time += common.results.cumulative_exe_time / common.results.completed_jobs
+            job_execution_time += common.results.execution_time / common.results.completed_jobs
         else:
             print("[W] No jobs completed. Skipping average job execution time calculation.")
         #---------------------------
@@ -260,7 +271,7 @@ def run_simulator(scale_values=common.scale_values_list):
         #         print(f"PE-{pe.ID} ({pe.name}) → {pe.total_energy:.2f} uJ")
         # print("-" * 65)
         
-        # print("\n%-30s | %-10s | %-20s | %-10s" % ("Task (ID, Name)", "PE ID", "PE Name", "Throughput"))
+        # print("\n%-30s | %-10s | %-20s | %-10s" % ("Task (ID, Name)", "PE ID", "PE Name", "Power"))
         # print("-" * 80)
 
         # for task in common.TaskQueues.completed.list:
@@ -269,16 +280,22 @@ def run_simulator(scale_values=common.scale_values_list):
         #         f"{task.ID}, {task.name}",
         #         assigned_pe.ID,
         #         assigned_pe.name,
-        #         assigned_pe.throughput
+        #         assigned_pe.power
         #     ))
         #     total_throughput=total_throughput+assigned_pe.throughput
 
         
         # -------------saving file to use in BO-------------
-        with open("ds3_sim_results.txt", "w") as f:
-            f.write(f"{job_execution_time:.6f}\n")
-            f.write(f"{total_throughput:.6f}\n")
-        
+        # with open("ds3_sim_results.txt", "w") as f:
+        #     f.write(f"{job_execution_time:.6f}\n")
+        #     f.write(f"{total_throughput:.6f}\n")
+
+        #cahnge hereeeeeeeeeeeeeeeeeeee
+        # with open("ds3_sim_results.txt", "w") as f:
+        #         f.write(f"{job_execution_time:.6f}\n")                        # latency (average job execution time)
+        #         f.write(f"{common.results.energy_consumption:.6f}\n")          # total energy consumption (µJ)
+        return float(job_execution_time), float(common.results.energy_consumption/common.results.completed_jobs)
+
         
         # print("%-30s : %-20s" % ("EDP",
         #                          round(common.results.execution_time * common.results.energy_consumption, 2)))
@@ -432,13 +449,15 @@ def run_simulator(scale_values=common.scale_values_list):
                     #------------------Save results to file for BO---------------------------
                     
                     
-                    # with open("ds3_sim_results.txt", "w") as f:
-                    #     f.write(f"{job_execution_time:.6f}\n")                                 # latency
-                    #     f.write(f"{common.results.execution_time:.6f}\n")                      # execution time
-                    #     f.write(f"{common.results.cumulative_exe_time:.6f}\n")                 # cumulative time
-                    #     f.write(f"{common.results.cumulative_energy_consumption / 1e6:.6f}\n")           # energy in Joules
-                    #     f.write(f"{common.results.execution_time * common.results.energy_consumption / 1e6:.6f}\n")  # EDP
-                    #     f.write(f"{common.results.average_job_number:.6f}\n")                  # avg concurrent jobs
+                    with open("ds3_sim_results.txt", "w") as f:
+                        f.write(f"{job_execution_time:.6f}\n")                                 # latency
+                        f.write(f"{common.results.execution_time:.6f}\n")                      # execution time
+                        f.write(f"{common.results.cumulative_exe_time:.6f}\n")                 # cumulative time
+                        f.write(f"{common.results.cumulative_energy_consumption / 1e6:.6f}\n")           # energy in Joules
+                        f.write(f"{common.results.execution_time * common.results.energy_consumption / 1e6:.6f}\n")  # EDP
+                        f.write(f"{common.results.average_job_number:.6f}\n")                  # avg concurrent jobs
+
+
 
                     
                     
@@ -494,7 +513,9 @@ def run_simulator(scale_values=common.scale_values_list):
         # end of for (ind,scale) in enumerate(common.scale_values_list):
 
 if __name__ == '__main__':
-    run_simulator(common.config_scale_values)
+    latency, energy = run_simulator(common.config_scale_values)
+    print(latency, energy)
+
 
 
 

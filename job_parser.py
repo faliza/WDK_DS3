@@ -61,8 +61,8 @@ def job_parse(jobs, file_name):
             if current_line[0] == 'job_name':                               
                 new_job.name = current_line[1]                                  # record new job's name and, 
                 jobs.list.append(new_job)                                       # append the job list with the new job
-                print(f"current_line[0] : {current_line[0]}")
-                print(f"current_line[1] : {current_line[1]}")
+                # print(f"current_line[0] : {current_line[0]}")
+                # print(f"current_line[1] : {current_line[1]}")
             
                 
             elif (current_line[0] == 'add_new_tasks'):                          # The key word "add_new_task" implies that the config file defines a new task
@@ -85,8 +85,8 @@ def job_parse(jobs, file_name):
         # end of: if not(found_new_task)
         
         else: # if not(found_new_task) (i.e., found a new task)
-            print("------------else 1--------------")
-            print(f"current_line[1] {current_line[1]}")
+            # print("------------else 1--------------")
+            # print(f"current_line[1] {current_line[1]}")
             
             # Check if this is the head (i.e., the leading task in this graph)
             if current_line[1] == 'HEAD':                                       # Marked as the HEAD
@@ -118,16 +118,16 @@ def job_parse(jobs, file_name):
             new_task = common.Tasks()
                         
             if (num_tasks_read < num_of_total_tasks):
-                print("Reading a new task: ", current_line[0])
+                # print("Reading a new task: ", current_line[0])
                 new_task.name = current_line[0]
 
-                print("The ID of this task: ", current_line[1])
+                # print("The ID of this task: ", current_line[1])
                 new_task.ID = int(current_line[1])
 
-                print("The base ID of this task: ", current_line[1])
+                # print("The base ID of this task: ", current_line[1])
                 new_task.base_ID = int(current_line[1])
 
-                print('This task belongs to application %s' %(new_job.name))
+                # print('This task belongs to application %s' %(new_job.name))
                 new_task.jobname = new_job.name
                 
                 # print("The predecessors for this task: ", current_line[2]);
@@ -141,7 +141,7 @@ def job_parse(jobs, file_name):
                     new_job.dag_depth = dict()
                     new_job.dag_depth[new_task.ID] = 0
                     new_job.dag_depth['DAG']       = -1
-                    print('Task ID: ' + str(new_task.ID) + ' Depth: ' + str(new_job.dag_depth[new_task.ID])) 
+                    # print('Task ID: ' + str(new_task.ID) + ' Depth: ' + str(new_job.dag_depth[new_task.ID])) 
                 else :
                     max_pred = -1
                     for pred in new_task.predecessors :
@@ -149,13 +149,13 @@ def job_parse(jobs, file_name):
                         if new_job.dag_depth[pred] > max_pred :
                             max_pred = new_job.dag_depth[pred]
                     new_job.dag_depth[new_task.ID] = max_pred + 1
-                    print('Task ID: ' + str(new_task.ID) + ' Depth: ' + str(new_job.dag_depth[new_task.ID])) 
+                    # print('Task ID: ' + str(new_task.ID) + ' Depth: ' + str(new_job.dag_depth[new_task.ID])) 
                 
                 if new_job.dag_depth['DAG'] < new_job.dag_depth[new_task.ID] :
                     new_job.dag_depth['DAG'] = new_job.dag_depth[new_task.ID]
 
                 num_tasks_read += 1                                             # Increment the number functionalities read so far
-                print("number of tasks read: ", num_tasks_read)
+                # print("number of tasks read: ", num_tasks_read)
                 #task_list.list.append(new_task)
                 new_job.task_list.append(new_task)
                 

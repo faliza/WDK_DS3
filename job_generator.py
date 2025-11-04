@@ -98,9 +98,9 @@ class JobGenerator:
                     # print('selected job id is',selection)
                     
                     
-                print(f"Before deepcopy: job ID = {int(selection)}, type = {type(self.jobs.list[int(selection)])}")
+                # print(f"Before deepcopy: job ID = {int(selection)}, type = {type(self.jobs.list[int(selection)])}")
                 self.generated_job_list.append(copy.deepcopy(self.jobs.list[int(selection)]))               # Create each job as a deep copy of the job chosen from job list
-                print(f"After deepcopy: job {i} with {len(self.generated_job_list[i].task_list)} tasks")
+                # print(f"After deepcopy: job {i} with {len(self.generated_job_list[i].task_list)} tasks")
                 common.results.job_counter += 1
                 summation += common.results.job_counter
                 count += 1
