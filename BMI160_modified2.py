@@ -127,7 +127,7 @@ for w in range(0, num_windows):
     gz_arr = np.zeros((window_length, 1))
 
     random_num = np.random.rand()
-    random_num=1
+    random_num=0.6
     if (0<random_num <= 0.8):
         sample_off = int(2/5*window_length)
     elif (0.8<random_num < 0.9):
