@@ -112,7 +112,7 @@ def sensor_sleep(time_left):
 # Perform auto-calibration
 ax_offset, ay_offset, az_offset = auto_calibrate()
 
-num_windows = 100
+num_windows = 2
 window_length = 250
 window_time = 5
 sample_time = 0.02

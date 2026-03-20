@@ -18,7 +18,7 @@ with open(filename, 'w', newline='') as csvfile:
     while True:
         p = ina.power()
         t = time.time()
-        print(p)
+       # print(p)
         #print(ina.voltage())
         data = []
         data.append(t)
