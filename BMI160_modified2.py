@@ -94,6 +94,10 @@ def calculate_tilt_angles(ax, ay, az):
 # Initialize BMI160
 initialize_bmi160()
 print("BMI160 Initialized")
+write_register(BMI160_I2C_ADDR, 0x7E, 0x11)  # ACC_NORMAL_MODE
+time.sleep(0.1)
+write_register(BMI160_I2C_ADDR, 0x7E, 0x15)  # GYR_NORMAL_MODE
+time.sleep(0.1)
 
 def sensor_sleep(time_left):
 
@@ -126,15 +130,16 @@ for w in range(0, num_windows):
     az_arr = np.zeros((window_length, 1))
     gz_arr = np.zeros((window_length, 1))
 
-    random_num = np.random.rand()
+    random_num = np.random.random()
     random_num=0.6
     if (0<random_num <= 0.8):
         sample_off = int(2/5*window_length)
+
     elif (0.8<random_num < 0.9):
         sample_off = int(3/5*window_length)
     else:
         sample_off = int(5/5*window_length)
-
+    print("sample off:",sample_off)
     for s in range(0, window_length):
 
         if (s >= sample_off):
@@ -168,4 +173,5 @@ for w in range(0, num_windows):
     avg_gy = np.mean(gy_arr)
     avg_z = np.mean(az_arr)
     avg_gz = np.mean(gz_arr)
+    print(avg_x)
 os.system("pkill -f 'python3 data_logger.py'")
